@@ -1,6 +1,9 @@
 # Tweeter Stats
 ##### By [Ofry Linkovsky](https://ofry.net)
 
+![alt text](https://i.ibb.co/MsZV0SX/Screen-Shot-2020-01-11-at-20-01-27.png
+ "screenshot")
+
 implement tweeter parser and showin some states
 
 ## server 
