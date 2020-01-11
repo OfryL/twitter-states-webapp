@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tweeter Stats</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous" />
+</head>
+<body>
+<div id="main" class="container p-3">
+    <h1>
+        Tweeter Stats
+        <small class="text-muted">By <strong><a href="http://ofry.net">Ofry Linkovsky</a></strong></small>
+    </h1>
+        <div class="row">
+            <div class="col-sm">
+                <toplist name="topWords" urlprefix="https://twitter.com/search?q="></toplist>
+            </div>
+            <div class="col-sm">
+                <toplist name="topHashTags" urlprefix="https://twitter.com/search?q=%23"></toplist>
+            </div>
+            <div class="col-sm">
+                <toplist name="topUsers" urlprefix="https://twitter.com/"></toplist>
+            </div>
+        </div>
+    <p class="text-justify">Average estimated tweets per sec - {{tweetPerSec}}</p>
+</div>
+
+<template id="toplist">
+    <div class="list-group">
+        <div class="list-group-item d-flex justify-content-between align-items-center active">
+            {{ title }}
+            <div class="input-group input-group-sm w-50 align-middle">
+                <input type="text" v-model="filterInput" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" aria-placeholder="Filter" placeholder="Filter">
+            </div>
+        </div>
+        <a v-for="item in items" :href="urlprefix+item.n" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            {{ item.n }}
+            <span class="badge badge-primary badge-pill">{{ item.c }}</span>
+        </a>
+    </div>
+</template>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.5.1/vue-resource.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
